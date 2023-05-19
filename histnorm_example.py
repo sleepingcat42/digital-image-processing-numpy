@@ -9,7 +9,7 @@ e-mail: sleepingcat@aliyun.com
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-from digitalimageprocess import histfunc
+from digitalimageprocesslib import histfunc
 
 def histnorm(img, img_t):
     shape = img.shape
@@ -49,7 +49,7 @@ if __name__ == '__main__':
     hist_color_t =  histfunc.calhist(img_color_t)
     hist_color_out =  histfunc.calhist(img_color_out)
 
-
+    #################### figure #################
 
     plt.figure(dpi=72,figsize=(8,6))
     plt.subplot(4,3,1)

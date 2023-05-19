@@ -10,7 +10,7 @@ e-mail: sleepingcat@aliyun.com
 import cv2
 # import numpy as np
 import matplotlib.pyplot as plt
-from digitalimageprocess import histfunc
+from digitalimageprocesslib import histfunc
 
 
 if __name__ == '__main__':
