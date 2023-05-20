@@ -72,7 +72,7 @@ def histeq(img):
     return img_out
 
 
-def histnorm_gray(img, img_t):
+def histmatch_gray(img, img_t):
     shape = img.shape
     cdf = cumsum(img)/shape[0]/shape[1]
     cdf = (cdf*255).astype(np.uint8)
@@ -90,13 +90,13 @@ def histnorm_gray(img, img_t):
     return img
 
 
-def histnorm(img, img_t):
+def histmatch(img, img_t):
     shape = img.shape
     img_out = np.zeros_like(img)
     if len(shape) == 2:
-        img_out = histnorm_gray(img, img_t)
+        img_out = histmatch_gray(img, img_t)
 
     elif len(shape) == 3:
         for k in range(shape[2]):
-            img_out[:,:, k] = histnorm_gray(img[:,:,k], img_t[:,:,k]) 
+            img_out[:,:, k] = histmatch_gray(img[:,:,k], img_t[:,:,k]) 
     return img_out.astype(np.uint8)

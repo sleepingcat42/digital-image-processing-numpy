@@ -11,7 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from digitalimageprocesslib import histfunc
 
-def histnorm(img, img_t):
+def histmatch(img, img_t):
     shape = img.shape
     cdf = histfunc.cumsum(img)/shape[0]/shape[1]
     cdf = (cdf*255).astype(np.uint8)
@@ -31,7 +31,7 @@ def histnorm(img, img_t):
 if __name__ == '__main__':
     img_target = cv2.imread("standard_test_images/jetplane.tif", cv2.IMREAD_GRAYSCALE)
     img = cv2.imread("standard_test_images/peppers_gray.tif", cv2.IMREAD_GRAYSCALE)
-    img_out = histfunc.histnorm(img, img_target)
+    img_out = histfunc.histmatch(img, img_target)
     
     hist = histfunc.calhist(img)
     hist_target =  histfunc.calhist(img_target)
@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
     img_color_t = cv2.imread("standard_test_images/lena_color_512.tif")
     img_color_t = cv2.cvtColor(img_color_t, cv2.COLOR_BGR2RGB)
-    img_color_out = histfunc.histnorm(img_color, img_color_t)
+    img_color_out = histfunc.histmatch(img_color, img_color_t)
 
     hist_color = histfunc.calhist(img_color)
     hist_color_t =  histfunc.calhist(img_color_t)
@@ -63,7 +63,7 @@ if __name__ == '__main__':
     plt.subplot(4,3,3)
     plt.imshow(img_out, cmap='gray')
     plt.axis('off')
-    plt.title('Normalization')
+    plt.title('Match')
     plt.subplot(4,3,7)
     plt.imshow(img_color)
     plt.axis('off')
