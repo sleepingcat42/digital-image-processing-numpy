@@ -8,6 +8,13 @@ e-mail: sleepingcat@aliyun.com
 """
 import numpy as np
 
+
+def gamma_corr(img, gamma):
+    img = (img/255)**gamma
+    
+    return (img*255).astype(np.uint8)
+    
+
 def calhist_gray(img):
         
     M, N = img.shape
